@@ -1,0 +1,119 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "luna-bot",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-03-30",
+  "placement": {
+    "region": "aws:eu-west-1"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "luna-bot-db",
+      "database_id": "YOUR_D1_DATABASE_ID"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "TRADE_COORDINATOR",
+        "class_name": "TradeCoordinator"
+      },
+      {
+        "name": "MARKET_STREAM",
+        "class_name": "MarketStreamCoordinator"
+      },
+      {
+        "name": "BOT_FANOUT",
+        "class_name": "BotFanoutCoordinator"
+      },
+      {
+        "name": "FOLLOW_ENGINE",
+        "class_name": "FollowEngineCoordinator"
+      },
+      {
+        "name": "NEWS_INGEST",
+        "class_name": "NewsIngestCoordinator"
+      }
+    ]
+  },
+  "queues": {
+    "producers": [
+      {
+        "binding": "PUSH_QUEUE",
+        "queue": "luna-push-queue"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "luna-push-queue",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5
+      }
+    ]
+  },
+  "triggers": {
+    "crons": [
+      "*/1 * * * *",
+      "*/5 * * * *",
+      "0 * * * *"
+    ]
+  },
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "TradeCoordinator"
+      ],
+      "tag": "v1"
+    },
+    {
+      "new_sqlite_classes": [
+        "MarketStreamCoordinator"
+      ],
+      "tag": "v2"
+    },
+    {
+      "new_sqlite_classes": [
+        "BotFanoutCoordinator"
+      ],
+      "tag": "v3"
+    },
+    {
+      "new_sqlite_classes": [
+        "FollowEngineCoordinator"
+      ],
+      "tag": "v4"
+    },
+    {
+      "new_sqlite_classes": [
+        "NewsIngestCoordinator"
+      ],
+      "tag": "v5"
+    }
+  ],
+  "vars": {
+    "APP_ENV": "production",
+    "LUNA_VERSION": "0.1.0",
+    "LUNA_SITE_URL": "https://YOUR_WORKER_NAME.YOUR_CF_SUBDOMAIN.workers.dev",
+    "POLYMARKET_RELAYER_HOST": "https://relayer-v2.polymarket.com",
+    "POLYMARKET_BUILDER_SETTINGS_URL": "https://polymarket.com/settings?tab=builder",
+    "POLYMARKET_HOST": "https://clob.polymarket.com",
+    "POLYMARKET_GAMMA_HOST": "https://gamma-api.polymarket.com",
+    "POLYMARKET_DATA_HOST": "https://data-api.polymarket.com",
+    "POLYMARKET_BRIDGE_HOST": "https://bridge.polymarket.com",
+    "POLYMARKET_CHAIN_ID": "137",
+    "POLYMARKET_SIGNATURE_TYPE": "1",
+    "LUNA_PLATFORM_FEE_BPS": "100",
+    "LUNA_PLATFORM_FEE_WALLET": "YOUR_FEE_COLLECTION_WALLET_ADDRESS",
+    "LUNA_TREASURY_SPLIT_BPS": "7000",
+    "LUNA_OPERATIONS_SPLIT_BPS": "2000",
+    "LUNA_REFERRAL_SPLIT_BPS": "500",
+    "LUNA_BUILDER_SPLIT_BPS": "500",
+    "POLYMARKET_MIN_ORDER_SIZE_USDC": "1",
+    "POLYGON_RPC_URL": "https://polygon-bor-rpc.publicnode.com",
+    "LUNA_ADMIN_CHAT_ID": "YOUR_TELEGRAM_CHAT_ID"
+  }
+}

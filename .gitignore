@@ -1,0 +1,28 @@
+# Secrets - never commit these
+.env
+cloudflare/.cf-account.env
+cloudflare/.dev.vars
+cloudflare/secrets.json
+
+# Telethon session files
+*.session
+*.session-journal
+
+# Runtime state
+.luna-bot-state.pkl
+data/runtime_*.json
+data/luna_smoke_results.json
+
+# Python
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+.venv-*/
+
+# Node
+node_modules/
+cloudflare/.wrangler/
+
+# OS
+.DS_Store

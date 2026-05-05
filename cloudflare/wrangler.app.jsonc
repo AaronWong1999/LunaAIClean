@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "luna-app-global",
+  "main": "src/app.ts",
+  "compatibility_date": "2026-03-30",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "luna-bot-db",
+      "database_id": "YOUR_D1_DATABASE_ID"
+    }
+  ],
+  "services": [
+    {
+      "binding": "EXEC_SERVICE",
+      "service": "luna-bot"
+    }
+  ],
+  "vars": {
+    "APP_ENV": "production",
+    "LUNA_VERSION": "0.1.0",
+    "LUNA_SITE_URL": "https://YOUR_WORKER_NAME.YOUR_CF_SUBDOMAIN.workers.dev"
+  }
+}

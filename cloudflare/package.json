@@ -1,0 +1,38 @@
+{
+  "name": "luna-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/deploy-workers.mjs build",
+    "build:app": "node scripts/guarded-run.mjs wrangler deploy --dry-run --config wrangler.app.jsonc",
+    "build:exec": "node scripts/guarded-run.mjs wrangler deploy --dry-run --config wrangler.jsonc",
+    "dev": "node scripts/guarded-run.mjs wrangler dev",
+    "cf:whoami": "node scripts/guarded-run.mjs wrangler whoami --json",
+    "cf:verify-account": "node scripts/verify-account.mjs",
+    "cf:deploy": "node scripts/deploy-workers.mjs deploy",
+    "cf:deploy:app": "node scripts/guarded-run.mjs wrangler deploy --config wrangler.app.jsonc",
+    "cf:deploy:exec": "node scripts/guarded-run.mjs wrangler deploy --config wrangler.jsonc",
+    "cf:dev": "node scripts/guarded-run.mjs wrangler dev",
+    "cf:d1:apply-schema": "node scripts/guarded-run.mjs node scripts/apply-sql.mjs luna-bot-db schema.sql",
+    "cf:d1:migrate-fee-ledger": "node scripts/guarded-run.mjs node scripts/migrate-fee-ledger.mjs",
+    "cf:d1:migrate-user-accounts": "node scripts/guarded-run.mjs node scripts/migrate-user-accounts.mjs",
+    "cf:d1:apply-seed": "node scripts/guarded-run.mjs node scripts/apply-sql.mjs luna-bot-db seed.sql",
+    "seed:build": "node scripts/build-seed.mjs",
+    "d1:apply-schema": "node scripts/apply-sql.mjs luna-bot-db schema.sql",
+    "d1:apply-seed": "node scripts/apply-sql.mjs luna-bot-db seed.sql"
+  },
+  "dependencies": {
+    "@polymarket/builder-relayer-client": "^0.0.8",
+    "@polymarket/builder-signing-sdk": "^1.0.0",
+    "@polymarket/clob-client": "^5.8.1",
+    "ethers": "^5.8.0",
+    "ox": "^0.14.18",
+    "viem": "^2.47.6"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260320.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.80.0"
+  }
+}
