@@ -33,7 +33,7 @@ export interface AutoExecContext {
     amountUsdc: number,
     exitStrategy?: string,
   ) => Promise<{ ok: true; orderId: string } | { ok: false; error: string }>;
-  /** Push a TG alert to the Aaron-side admin channel. */
+  /** Push a TG alert to the admin channel. */
   notifyAdmin?: (msg: string) => Promise<void>;
   /** Optional per-trade user push. */
   notifyUser?: (telegramUserId: string, msg: string) => Promise<void>;

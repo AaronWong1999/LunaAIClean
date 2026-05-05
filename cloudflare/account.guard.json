@@ -1,6 +1,0 @@
-{
-  "project": "LunaAI",
-  "expectedEmail": "YOUR_CLOUDFLARE_EMAIL",
-  "expectedAccountId": "YOUR_CLOUDFLARE_ACCOUNT_ID",
-  "expectedAccountName": "YOUR_CLOUDFLARE_ACCOUNT_NAME"
-}

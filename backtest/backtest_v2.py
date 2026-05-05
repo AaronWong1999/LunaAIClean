@@ -27,38 +27,12 @@ NINETY_DAYS_AGO = (datetime.now(timezone.utc) - timedelta(days=90)).timestamp()
 
 # Monthly top earners from leaderboard (March 2026)
 MONTHLY_TOP_WALLETS = [
-    ("majorexploiter", "0x019782cab5d844f02bafb71f512758be78579f3c"),
-    ("HorizonSplendidView", "0x02227b8f5a9636e895607edd3185ed6ee5598ff7"),
-    ("432614799197", "0xdc876e6873772d38716fda7f2452a78d426d7ab6"),
-    ("beachboy4", "0xc2e7800b5af46e6093872b177b7a5e7f0563be51"),
-    ("MinorKey4", "0xb90494d9a5d8f71f1930b2aa4b599f95c344c255"),
-    ("bcda", "0xb45a797faa52b0fd8adc56d30382022b7b12192c"),
-    ("gmanas", "0xe90bec87d9ef430f27f9dcfe72c34b76967d5da2"),
-    ("swisstony", "0x204f72f35326db932158cba6adff0b9a1da95e14"),
-    ("Countryside", "0xbddf61af533ff524d27154e589d2d7a81510c684"),
-    ("geniusMC", "0x0b9cae2b0dfe7a71c413e0604eaac1c352f87e44"),
-    ("WoofMaster", "0x916f7165c2c836aba22edb6453cdbb5f3ea253ba"),
-    ("SecondWindCapital", "0x8c80d213c0cbad777d06ee3f58f6ca4bc03102c3"),
-    ("HedgeMaster88", "0x036c159d5a348058a81066a76b89f35926d4178d"),
-    ("FTWUTB", "0xdb2223cc5202a4718c3069f577ec971f71c96478"),
-    ("gatorr", "0x93abbc022ce98d6f45d4444b594791cc4b7a9723"),
-    ("DrPufferfish", "0xdb27bf2ac5d428a9c63dbc914611036855a6c56e"),
-    ("huhaoli", "0xf19d7d88cf362110027dcd64750fdd209a04276f"),
-    ("pinkblanket", "0x0720803c7cb0d0c5a928787b3b7ea148c6831cdb"),
-    ("anoin123", "0x96489abcb9f583d6835c8ef95ffc923d05a86825"),
-    ("dutchbroo", "0xf6d91fbbefacade7d5908eb13e16acf1efeb305e"),
+    ("placeholder", "0x0000000000000000000000000000000000000000"),
 ]
 
 # Also add top ALL-TIME wallets that aren't in monthly
 ALLTIME_TOP_WALLETS = [
-    ("Theo4", "0x56687bf447db6ffa42ffe2204a05edaa20f55839"),
-    ("Fredi9999", "0x1f2dd6d473f3e824cd2f8a89d9c69fb96f6ad0cf"),
-    ("zxgngl", "0xd91cfb13d0e30e9a80e1d3f50e07e81ed1096fdd"),
-    ("kch123", "0x58c2b816d4725c01b57be98a2ae3e6dfcd85e43c"),
-    ("Len9311238", "0xf8ed2ed43bca1e5e79e3e118b9ca1e2a36f87f8e"),
-    ("RepTrump", "0x3e2acbc79f8aab4de0b20399fd28b6d0b7c5e028"),
-    ("PrincessCaro", "0xb5a2b58c1c2f3c9a05f4fd7c4b1f8a36c22d6d0a"),
-    ("KeyTransporter", "0x24e3c5f0b1a3e62a6a56f8bc4a88b05a64f3c4a6"),
+    ("placeholder2", "0x0000000000000000000000000000000000000001"),
 ]
 
 
@@ -411,9 +385,9 @@ def main():
         'all_trades': [d for r in all_results for d in [dict(**dd, trader=r['name']) for dd in r['details']]],
     }
     
-    with open('/Users/aaron/backtest_v2_results.json', 'w') as f:
+    with open('./backtest_v2_results.json', 'w') as f:
         json.dump(save_data, f, indent=2)
-    print(f"\nResults saved to /Users/aaron/backtest_v2_results.json")
+    print(f"\nResults saved to ./backtest_v2_results.json")
 
 
 if __name__ == '__main__':

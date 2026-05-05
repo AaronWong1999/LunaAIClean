@@ -165,7 +165,7 @@ def backtest_wallet(wallet, name, limit=100):
 
 def main():
     # Load smart money addresses
-    with open('/Users/aaron/polymarket_smart_money_addresses.json') as f:
+    with open('./polymarket_smart_money_addresses.json') as f:
         all_wallets = json.load(f)
     
     # Sort by PnL, take top N
@@ -259,7 +259,7 @@ def main():
             print(f"  ❌ {d['trader']:15s} | {d['title']:40s} | {d['outcome']} @ {d['buy_price']:.3f} | -100% | ${d['usd_value']:,.0f}")
     
     # Save full results
-    with open('/Users/aaron/backtest_results.json', 'w') as f:
+    with open('./backtest_results.json', 'w') as f:
         json.dump({
             'summary': {
                 'wallets': len(all_results),
@@ -284,7 +284,7 @@ def main():
             } for r in all_results],
             'all_trades': all_details,
         }, f, indent=2)
-    print(f"\nFull results saved to /Users/aaron/backtest_results.json")
+    print(f"\nFull results saved to ./backtest_results.json")
 
 
 if __name__ == '__main__':
