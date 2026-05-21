@@ -8,25 +8,29 @@
 
 # Luna AI
 
-**A Polymarket smart-money copilot that ranks wallets by verifiable performance — not follower count. Telegram bot + Cloudflare Workers backend.**
+**The only Polymarket bot you can deploy entirely on Cloudflare Workers — no VPS, no Docker, no always-on server. Ranks wallets by verifiable on-chain performance, not follower count.**
 
-**一个 Polymarket 聪明钱助手——用可验证的真实战绩给钱包排名，而非粉丝数。Telegram Bot + Cloudflare Workers 后端。**
+**唯一一个完全跑在 Cloudflare Workers 上的 Polymarket Bot——不需要 VPS、不需要 Docker、不需要常驻服务器。用可验证的链上战绩给钱包排名，而非粉丝数。**
 
 ---
 
-## What makes Luna different / Luna 有什么不同
+## Why Serverless Matters / 为什么 Serverless 重要
 
-Most Polymarket copy-trade bots blindly mirror a fixed set of wallets. Luna scores every wallet on **win rate**, **ROI**, and **sample quality** before you risk capital. Every signal comes with a **public receipt** — timestamped, tracked, and settled on-chain. If a wallet's performance decays, its Smart Score drops. You see it. You decide.
+Every other Polymarket bot — open source or otherwise — requires a VPS, a rented server, or a home machine that stays on 24/7. Luna is built from the ground up on **Cloudflare Workers** + **D1** (edge SQLite). You deploy it with one command. It runs across Cloudflare's global edge network. When nobody's trading, your bill is **$0.00**.
 
-大多数 Polymarket 跟单机器人无脑镜像固定钱包。Luna 在你下注之前，先用**胜率、ROI、样本质量**给每个钱包打分。每条信号都附带**公开战绩收据**——时间戳、追踪记录、链上结算，全透明。钱包表现变差，Smart Score 就下降。你看见，你决定。
+市面上所有其他 Polymarket Bot——开源或不开源——都需要一台 VPS、租一台服务器、或者家里电脑 24 小时不关机。Luna 从第一天就用 **Cloudflare Workers** + **D1**（边缘 SQLite）构建。一条命令部署，跑在全球边缘节点。没人在交易的时候，你的账单是 **$0.00**。
 
-| | Typical Copy Bots | **Luna** |
+| | Typical Polymarket Bots | **Luna** |
 |---|---|---|
+| Infrastructure | VPS / Docker / bare metal | **Cloudflare Workers (serverless)** |
+| Monthly cost | $20–$50+/mo | **Free tier → $5/mo at scale** |
+| Deployment | SSH, Docker Compose, nginx | **One command: `node deploy.mjs`** |
+| Scaling | Manual (add more VPS) | **Auto (Cloudflare global edge)** |
+| Uptime management | You handle it | **Cloudflare handles it** |
 | Wallet selection | Fixed list / manual | **Smart Score ranking** |
 | Track record | Hidden or cherry-picked | **Public on-chain receipts** |
 | Signal quality | Unknown | **Filtered by win rate + sample size** |
 | Language | EN only | **Bilingual CN / EN** |
-| Backend cost | $20+/mo VPS | **Serverless (free tier works)** |
 | AI insights | ❌ | **LLM-powered trade analysis** |
 | Backtesting | ❌ | **Built-in engine** |
 | Open source | Some | **MIT** |
